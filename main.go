@@ -81,7 +81,7 @@ func main() {
 			"message": "Markdown received",
 			"content": modifiedHTML,
 		})
-	}, vbf.MwLogger)
+	}, vbf.MwCORS, vbf.MwLogger)
 
 	err := vbf.Serve(mux, "8080")
 	if err != nil {
