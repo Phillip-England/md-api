@@ -15,17 +15,9 @@ import (
 	goldmarkhtml "github.com/yuin/goldmark/renderer/html"
 )
 
-const KEY_TEMPLATES = "TEMPLATES"
-
 func main() {
 
 	mux, gCtx := vbf.VeryBestFramework()
-
-	templates, err := vbf.ParseTemplates("./templates", nil)
-	if err != nil {
-		panic(err)
-	}
-	vbf.SetGlobalContext(gCtx, KEY_TEMPLATES, templates)
 
 	vbf.HandleStaticFiles(mux)
 	vbf.HandleFavicon(mux)
@@ -91,7 +83,7 @@ func main() {
 		})
 	}, vbf.MwLogger)
 
-	err = vbf.Serve(mux, "8080")
+	err := vbf.Serve(mux, "8080")
 	if err != nil {
 		panic(err)
 	}
